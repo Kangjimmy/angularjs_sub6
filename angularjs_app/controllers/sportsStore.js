@@ -25,6 +25,12 @@ angular.module("sportsStore").controller("sportsStoreCtrl", function ($scope) {
         category: "Category #4",
         price: 100,
       },
+      {
+        name: "Product #5",
+        description: "A Shark Product",
+        category: "Category #2",
+        price: 100,
+      },
     ],
   };
 });
