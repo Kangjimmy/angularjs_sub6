@@ -1,6 +1,6 @@
 angular
   .module("sportsStore")
-  .constant("dataUrl", "http://localhost:5000/products")
+  .constant("dataUrl", "http://localhost:5000/products/Error")
   .controller("sportsStoreCtrl", function (dataUrl, $scope, $http) {
     $scope.data = {};
 
@@ -10,6 +10,6 @@ angular
         $scope.data.products = res.data;
       })
       .catch(function (err) {
-        console.error("데이터 로드 실패:", err);
+        $scope.data.error = err;
       });
   });
