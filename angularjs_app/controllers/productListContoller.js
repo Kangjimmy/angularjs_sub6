@@ -1,13 +1,34 @@
 angular
   .module("sportsStore")
-  .controller("productListCtrl", function ($scope, $filter) {
-    let selectedCategory = null;
+  .constant("productListActiveClass", "btn-primary")
+  .constant("productListPageCount", 3)
+  .controller(
+    "productListCtrl",
+    function ($scope, $filter, productListActiveClass, productListPageCount) {
+      let selectedCategory = null;
+      $scope.pageSize = productListPageCount;
+      $scope.selectedPage = 1;
 
-    $scope.selectCategory = function (newCategory) {
-      selectedCategory = newCategory;
-    };
+      $scope.selectCategory = function (newCategory) {
+        selectedCategory = newCategory;
+        $scope.selectedPage = 1;
+      };
 
-    $scope.categoryFilterFn = function (product) {
-      return selectedCategory == null || product.category == selectedCategory;
-    };
-  });
+      $scope.selectPage = function (newPage) {
+        $scope.selectedPage = newPage;
+      };
+
+      $scope.categoryFilterFn = function (product) {
+        return selectedCategory == null || product.category == selectedCategory;
+      };
+
+      $scope.getCategoryClass = function (category) {
+        return selectedCategory == category ? productListActiveClass : "";
+      };
+      $scope.getPageClass = function (page) {
+        return $scope.selectedPage == page
+          ? productListActiveClass
+          : "btn-outline-primary";
+      };
+    }
+  );
