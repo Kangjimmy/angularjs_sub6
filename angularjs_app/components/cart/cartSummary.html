@@ -1,0 +1,17 @@
+<style>
+  .navbar-right {
+    float: right !important;
+    margin-right: 5px;
+  }
+  .navbar-text {
+    margin-right: 10px;
+  }
+</style>
+
+<div class="ms-auto d-flex align-items-center">
+  <div class="me-3 navbar-brand">
+    <b>Your cart:</b>
+    {{itemCount()}} item(s), {{total() | currency}}
+  </div>
+  <a class="btn btn-secondary">Checkout</a>
+</div>
