@@ -15,12 +15,27 @@
 
     <!-- my script -->
     <script>
-      angular.module("sportsStore", ["customFilters", "cart"]);
+      angular
+        .module("sportsStore", ["customFilters", "cart", "ngRoute"])
+        .config(function ($routeProvider, $locationProvider) {
+          $locationProvider.hashPrefix(""); // hashbang 경로에 #! 없이 사용하도록 설정
+
+          $routeProvider.when("/checkout", {
+            templateUrl: "/views/checkoutSummary.html",
+          });
+          $routeProvider.when("/products", {
+            templateUrl: "/views/productList.html",
+          });
+          $routeProvider.otherwise({
+            templateUrl: "/views/productList.html",
+          });
+        });
     </script>
     <script src="controllers/sportsStore.js"></script>
     <script src="controllers/productListContoller.js"></script>
     <script src="filters/customFilters.js"></script>
     <script src="components/cart/cart.js"></script>
+    <script src="./node_modules/angular-route/angular-route.js"></script>
 
     <title>sportsStore</title>
   </head>
@@ -36,6 +51,6 @@
     </div>
 
     <!-- 메인 컨테이너 -->
-    <ng-include src="'views/productList.html'"></ng-include>
+    <ng-view />
   </body>
 </html>
