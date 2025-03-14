@@ -15,11 +15,12 @@
 
     <!-- my script -->
     <script>
-      angular.module("sportsStore", ["customFilters"]);
+      angular.module("sportsStore", ["customFilters", "cart"]);
     </script>
     <script src="controllers/sportsStore.js"></script>
     <script src="controllers/productListContoller.js"></script>
     <script src="filters/customFilters.js"></script>
+    <script src="components/cart/cart.js"></script>
 
     <title>sportsStore</title>
   </head>
@@ -27,6 +28,7 @@
     <!-- 네비게이션 바 -->
     <nav class="navbar navbar-dark bg-dark p-3">
       <a href="#" class="navbar-brand">SPORTS STORE</a>
+      <cart-summary />
     </nav>
     <div class="alert alert-danger" ng-show="data.error">
       Error({{data.error.status}}) The products data was not loaded.
