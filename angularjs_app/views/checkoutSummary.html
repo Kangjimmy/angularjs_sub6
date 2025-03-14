@@ -1,2 +1,48 @@
-<div class="lead">This is checkout summary view</div>
-<a href="#/products" class="btn btn-primary">Back</a>
+<h2>Your cart</h2>
+<div ng-controller="cartSummaryController">
+  <div ng-show="cartData.length == 0">
+    No products in cart
+    <a href="#/products">go to products</a>
+    <!-- 카트에 아무것도 없을때 말해주고 뒤로 이동하도록 -->
+  </div>
+  <div ng-hide="cartData.length == 0">
+    <!-- 카트에 아무것도 없을때 숨기고 아니면 보이도록 -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-center">Quantity</th>
+          <th>Item</th>
+          <th class="text-right">Price</th>
+          <th colspan="2" class="text-right">SubTotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in cartData">
+          <td class="text-center">{{item.count}}</td>
+          <td class="text-left">{{item.name}}</td>
+          <td class="text-right">{{item.price}}</td>
+          <td class="text-right">{{item.price * item.count | currency}}</td>
+          <td>
+            <button ng-click="remove(item.id)" class="btn btn-warning">
+              remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" class="text-rightr">Total:</td>
+          <td class="text-right">{{total() | currency}}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="text-center">
+      <a class="btn btn-primary" href="#/products" class="btn"
+        >Continue shopping.</a
+      >
+      <a class="btn btn-primary" href="#/placeorder" class="btn"
+        >Please order now.</a
+      >
+    </div>
+  </div>
+</div>

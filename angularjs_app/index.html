@@ -20,6 +20,12 @@
         .config(function ($routeProvider, $locationProvider) {
           $locationProvider.hashPrefix(""); // hashbang 경로에 #! 없이 사용하도록 설정
 
+          $routeProvider.when("/complete", {
+            templateUrl: "/views/thankYou.html",
+          });
+          $routeProvider.when("/placeorder", {
+            templateUrl: "/views/placeOrder.html",
+          });
           $routeProvider.when("/checkout", {
             templateUrl: "/views/checkoutSummary.html",
           });
@@ -33,6 +39,7 @@
     </script>
     <script src="controllers/sportsStore.js"></script>
     <script src="controllers/productListContoller.js"></script>
+    <script src="controllers/checkoutController.js"></script>
     <script src="filters/customFilters.js"></script>
     <script src="components/cart/cart.js"></script>
     <script src="./node_modules/angular-route/angular-route.js"></script>
