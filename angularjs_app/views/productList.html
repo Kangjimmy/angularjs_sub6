@@ -31,6 +31,12 @@
           <strong>{{ item.name }}</strong>
           <span class="badge bg-primary">{{ item.price | currency }}</span>
         </h3>
+        <button
+          class="btn btn-success ms-auto"
+          ng-click="addProductToCart(item)"
+        >
+          Add to cart
+        </button>
         <span class="lead">{{ item.description }}</span>
       </div>
       <div class="d-flex justify-content-end">

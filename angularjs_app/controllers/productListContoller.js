@@ -4,7 +4,13 @@ angular
   .constant("productListPageCount", 3)
   .controller(
     "productListCtrl",
-    function ($scope, $filter, productListActiveClass, productListPageCount) {
+    function (
+      $scope,
+      $filter,
+      productListActiveClass,
+      productListPageCount,
+      cart
+    ) {
       let selectedCategory = null;
       $scope.pageSize = productListPageCount;
       $scope.selectedPage = 1;
@@ -29,6 +35,9 @@ angular
         return $scope.selectedPage == page
           ? productListActiveClass
           : "btn-outline-primary";
+      };
+      $scope.addProductToCart = function (product) {
+        cart.addProduct(product.id, product.name, product.price);
       };
     }
   );
